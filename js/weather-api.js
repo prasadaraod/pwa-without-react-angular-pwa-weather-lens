@@ -3,10 +3,10 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 export async function fetchWeatherData(city) {
   const url = `${BASE_URL}?q=${encodeURIComponent(city)}&units=metric&appid=${API_KEY}`;
-  
+  console.log("Dispatching fetch request to URL:", url); // Add this line to debug
   try {
     const response = await fetch(url);
-    if (!response.ok) throw new Error('City not found');
+    if (!response.ok) throw new Error(`HTTP Error Status: ${response.status}`);
     
     const data = await response.json();
     return data;

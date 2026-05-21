@@ -20,11 +20,22 @@ window.addEventListener('offline', () => toast.classList.remove('hidden'));
 
 // 4. Trigger Weather Fetch
 async function handleSearch() {
-  const city = cityInput.value.trim();
-  if (!city) return;
+//   const city = cityInput.value.trim();
+//   if (!city) return;
+  const fullInput = cityInput.value.trim();
+  if (!fullInput) return;
+  
+  // Optimization: If user types "Gachibowli, Hyderabad", 
+  // extract just "Hyderabad" (or the last item) to avoid API 404s
+  let cityQuery = fullInput;
+  if (fullInput.includes(',')) {
+    const parts = fullInput.split(',');
+    // If they typed neighborhood, city, country -> grab the city component
+    cityQuery = parts.length >= 2 ? parts[1].trim() : parts[0].trim();
+  }
   
   try {
-    const data = await fetchWeatherData(city);
+    const data = await fetchWeatherData(cityQuery);
     updateUI(data);
   } catch (error) {
     console.error("Could not retrieve weather data:", error);
