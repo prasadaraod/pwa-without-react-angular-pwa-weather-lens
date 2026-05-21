@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Lens</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0ea5e9">
+</head>
+<body>
+
+  <header>
+    <h1>Weather Lens</h1>
+    <button id="install-btn" style="display: none;">Install App</button>
+  </header>
+
+  <main>
+    <section class="search-container">
+      <input type="text" id="city-input" placeholder="Enter city name..." autocomplete="off">
+      <button id="search-btn">Search</button>
+    </section>
+
+    <div id="offline-toast" class="toast hidden">You are currently offline. Displaying cached data.</div>
+
+    <section id="weather-dashboard" class="weather-card hidden">
+      <h2 id="location-name">--</h2>
+      <p id="weather-desc">--</p>
+      <div class="temp-container">
+        <span id="temperature">--</span>°C
+      </div>
+      <div class="details">
+        <div>Humidity: <span id="humidity">--</span>%</div>
+        <div>Wind: <span id="wind">--</span> m/s</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
