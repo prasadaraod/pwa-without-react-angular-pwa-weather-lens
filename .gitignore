@@ -141,3 +141,13 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# not available in node ignore
+#node_modules/
+# dist/
+# .angular/
+.DS_Store
+Thumbs.db
+# *.log
+# .env
+.env.local
